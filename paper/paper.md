@@ -1,5 +1,5 @@
 ---
-title: 'The Experiment Factory: Reproducible Experiment Containers'
+title: 'PFD Toolkit: Unlocking Prevention of Future Death Reports for Research'
 tags:
   - containers
   - docker
@@ -7,17 +7,39 @@ tags:
   - reproducibility
   - Docker
 authors:
- - name: Vanessa Sochat
+ - name: Sam Osian
    orcid: 0000-0002-4387-3819
    affiliation: 1
 affiliations:
- - name: Stanford University Research Computing
+ - name: University of Liverpool
    index: 1
-date: 28 November 2017
+date: 9 June 2025
 bibliography: paper.bib
 ---
 
-# Summary
+
+## Summary
+
+Prevention of Future Death (PFD) reports are issued by coroners in England and Wales when an inquest identifies risks that, if left unaddressed, could lead to further deaths. These reports are published online as a public resource, aiming to alert relevant organisations and the public to preventable hazards. However, despite their potential for system learning and improvement, PFD reports remain persistently underused in research and policy. Much of their value is lost because the reports are difficult to find, search, and analyse in bulk.
+
+**PFD Toolkit** is a Python package created to address these challenges. The toolkit automates the full pipeline of accessing, cleaning, and structuring PFD data, making this vital information readily available and usable. By integrating advanced natural language processing – including large language models (LLMs) and vision-based models – the toolkit can extract structured data from both text-based and scanned, image-based reports. Users can search thousands of reports with flexible, plain-English queries and assign custom thematic labels or extract specific features at scale.
+
+This approach eliminates the need for laborious manual screening and coding, dramatically reducing the time and expertise required to turn PFD data into actionable insights. In effect, the toolkit transforms an underused, fragmented archive into a living resource for research, public health, and safety policy, enabling the rapid identification of emerging risks and timely policy response.
+
+## Statement of need
+
+Both UK Government and independent reviews repeatedly describe PFD reports as “under-utilised” (Home Office, 2023), and highlight the repository’s minimal functionality (Justice Committee, 2021). In the literature, the current system is noted as a “missed opportunity” for learning and reform (BMJ, 2024).
+
+The persistent underuse of PFD reports is rooted in a series of practical and technical barriers. The official Courts and Tribunals website hosts the reports in a variety of inconsistent formats, often with missing or incomplete metadata. Many reports are available only as scanned images, rendering them invisible to conventional search and text analysis tools. Even basic categorisation is lacking; around 73% of PFD reports have no assigned thematic label at all, and the labels that do exist are inconsistently applied and frequently inaccurate (Bremmer et al., 2023; Zhang and Richards, 2023). As a result, researchers and policymakers who wish to learn from this resource face a burdensome, error-prone process: manually screening, collating, and extracting relevant information report by report, often accepting incomplete or partial datasets as a compromise.
+
+Previous efforts to improve access, such as the **Preventable Deaths Tracker**, provide summary statistics and basic metadata, but do not allow users to search within the full report text, apply custom thematic coding, or extract features from the reports. There remains a critical gap in the infrastructure needed to systematically analyse the detailed content of PFD reports and connect case-level findings to wider trends.
+
+**PFD Toolkit** addresses this unmet need by providing robust automation for every stage of PFD data processing. It reliably scrapes and updates the latest reports, uses LLMs and vision-based models to extract and standardise both text and image-based data, and offers users fine-grained control over thematic coding and feature extraction. This makes possible, for the first time, comprehensive, up-to-date, and flexible analysis of the entire national archive of PFD reports. By lowering the technical barriers and enabling new forms of analysis, the toolkit supports researchers, clinicians, and policymakers to make meaningful use of PFD data. This closes the gap between available evidence and actionable learning, ultimately supporting efforts to prevent future deaths.
+
+
+
+
+<!-- # Summary
 
 The Experiment Factory [@vanessa_sochat_2017_1059119] is Open Source software that makes it easy to generate reproducible behavioral experiments. It offers a browsable, and tested [library](https://expfactory.github.io/experiments/) of experiments, games, and surveys, support for multiple kinds of databases, and [robust documentation](https://expfactory.github.io/expfactory/) for the provided tools. A user interested in deploying a behavioral assessment can simply select a grouping of paradigms from the web interface, and build a container to serve them.
 
@@ -53,4 +75,4 @@ Once a container is generated and it's unique identifier and image layers served
 
 More information on experiment development and contribution to the expfactory tools, containers, or library is provided at the Experiment Factory  <a href="https://expfactory.github.io/expfactory/" target="_blank">official documentation</a>. This is an Open Source project, and so <a href="https://www.github.com/expfactory/expfactory/issues" target="_blank">feedback and contributions</a> are encouraged and welcome.
 
-# References
+# References -->
