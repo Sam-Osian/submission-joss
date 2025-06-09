@@ -20,7 +20,7 @@ bibliography: paper.bib
 
 ## Summary
 
-Prevention of Future Death (PFD) reports are issued by coroners in England and Wales when an inquest identifies risks that, if left unaddressed, could lead to further deaths. These reports are published online as a public resource, aiming to alert relevant organisations and the public to preventable hazards. However, despite their potential for system learning and improvement, PFD reports remain persistently underused in research and policy. Much of their value is lost because the reports are difficult to find, search, and analyse in bulk.
+Prevention of Future Death (PFD) reports are issued by coroners in England and Wales when an inquest identifies risks that, if left unaddressed, could lead to further deaths. These reports are published online as a public resource, aiming to alert relevant organisations and the public to preventable hazards. However, despite their potential for system learning and improvement, PFD reports remain persistently underused in research and policy. Much of their value is lost because the reports are difficult to find, search, and analyse in bulk. 
 
 **PFD Toolkit** is a Python package created to address these challenges. The toolkit automates the full pipeline of accessing, cleaning, and structuring PFD data, making this vital information readily available and usable. By integrating advanced natural language processing – including large language models (LLMs) and vision-based models – the toolkit can extract structured data from both text-based and scanned, image-based reports. Users can search thousands of reports with flexible, plain-English queries and assign custom thematic labels or extract specific features at scale.
 
