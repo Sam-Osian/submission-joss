@@ -1,6 +1,6 @@
 ---
 title: 'PFD Toolkit: Unlocking Prevention of Future Death Reports for Research'
-tags:
+tags: # Dan: are these tags okay? Not sure if they're for searching on JOSS or if they're for SEO or something
   - Python
   - Prevention of Future Deaths
   - Coroners' Reports
@@ -11,11 +11,11 @@ tags:
   - Large Language Models (LLMs)
 authors:
  - name: Sam Osian
-   corresponding: true
+   corresponding: true    # Corr. author isn't getting rendered rn; not sure why
    orcid: 0009-0000-7644-6218
    affiliation: 1
  - name: Jonathan Pytches
-   orcid: 0000-0000-0000-0000
+   orcid: 0000-0000-0000-0000 # Stop forgetting to ask John to get an orcid!!!
    affiliation: 2
 affiliations:
  - name: Department of Primary Care and Mental Health, University of Liverpool, United Kingdom
@@ -37,10 +37,10 @@ factors believed to have contributed, and identifies concerns that, if addressed
 future deaths from occurring.
 
 While these documents represent a rare, ground-level view into public safety risks, their potential for analysis
-has long been obstructed: reports are scattered across a judicial website whose topic filters omit
+has long been obstructed. Reports are scattered across a judicial website whose topic filters omit
 entire swathes of content. The website offers no ability to mass-download reports into a single
-dataset, and many older reports exist only as scanned PDFs, which cannot be text-searched or analysed 
-using conventional methods. 
+dataset, and many older reports exist only as scanned, image-based .pdfs, which cannot be 
+text-searched or analysed using conventional methods. 
 
 *PFD Toolkit* is a Python package designed to overcome these barriers. The toolkit automates 
 the full pipeline of loading, cleaning, structuring and analysing PFD data, making 
@@ -49,12 +49,16 @@ and vision models, the toolkit extracts structured data from both text and scann
 Users can search thousands of reports with flexible, plain-English queries, assign custom thematic labels, 
 and extract specific features at scale.
 
-The toolkit transforms a fragmented archive into a living resource for research and public 
-health, enabling rapid identification of emerging risks and timely policy response.
+The toolkit transforms a once fragmented archive into a living resource for research and public 
+health, enabling rapid identification of emerging risks and timely policy responses.
 
 
 
 # Statement of need
+
+<!-- Maybe should cite the paper where Georgia Richards called for technological innovation... 
+...Word limit is tight though!
+-->
 
 Governmental and Parliamentary reviews have described PFD reports as "under-utilised" 
 (Home Office, 2023), citing minimal repository functionality (Justice Committee, 2021). The 
@@ -72,14 +76,14 @@ by hand (Dernie, et al., 2023).
 
 Existing resources, notably the *Preventable Deaths Tracker*, provide summary statistics and 
 metadata, but lack support for full-text search, custom coding, or automatic information 
-extraction. There remains a critical gap in the infrastructure for automating the myiad of 
+extraction. There remains a critical gap in the infrastructure for automating the myriad of 
 manual tasks in PFD report analysis and for lowering the barrier to research.
 
 *PFD Toolkit* addresses this need by providing robust automation for every stage of PFD data 
 processing. It reliably scrapes, cleans, and standardises both text and image-based data, 
-enabling flexible thematic coding and feature extraction across the national archive. 
+enabling flexible thematic coding and feature extraction across the repository.
 
-This makes possible, for the first time, timely, up-to-date, and flexible analysis of the 
+This makes possible - for the first time - timely, up-to-date, and flexible analysis of the 
 entire national archive of PFD reports. In doing so, the toolkit closes the gap between 
 available evidence and actionable learning, ultimately supporting efforts to prevent 
 future deaths.
@@ -87,6 +91,9 @@ future deaths.
 
 
 # Key Features
+
+<!-- Dan: do you think I should mention the span identification here? It's not really a core
+feature imo, though it does seem to reduce/eliminate false positives. -->
 
 1. **Rapid data access.** Instantly loads the latest Prevention of Future Deaths data, 
 updated weekly.
@@ -103,13 +110,17 @@ report text.
 7. **Batch processing.** Supports parallel batch processing of both CPU and LLM tasks, 
 enabling efficient handling of large datasets.
 
+The toolkit’s modular architecture also makes it straightforward to extend or adapt for 
+future research needs.
+
+
 
 
 # Example usage
 
-The below code demonstrates key features #1 and #4. In a few lines of code, the user can automate potentially
-months or even years of manual work: downloading and screening thousands of reports into a research-relevant
-corpus.
+The example below showcases key features #1 and #4. With just a few lines of code, users can 
+automate what would otherwise take months of manual effort: downloading and screening thousands 
+of reports into a research-ready dataset.
 
 
 ```python
@@ -118,7 +129,7 @@ from pfd_toolkit import load_reports, LLM, Screener
 
 # -- Load reports into a pandas DataFrame --
 reports = load_reports(
-  start_date="2013-01-01", end_date="2025-01-01"
+  start_date="2013-01-01", end_date="2025-07-01"
 )
 
 # -- Set up LLM client --
@@ -129,8 +140,8 @@ query="Concerns related to the Mental Health Act"
 
 screener = Screener(reports=reports, llm=llm_client)
 
-screened_reports = screener.screen_reports(
-                              user_query=query)
+filtered_df = screener.screen_reports(
+                          user_query=query)
 ```
 
 # Evaluation
@@ -145,9 +156,10 @@ and analysis to a matter of minutes, matching human-level extraction accuracy.
 *PFD Toolkit* is available on [GitHub](https://github.com/Sam-Osian/PFD-toolkit) and PyPI 
 (via `pip install pfd_toolkit`). Full documentation is available at: 
 https://sam-osian.github.io/pfd-toolkit/. Both the documentation and the GitHub repository 
-contain tutorials for all core features. 
+contain tutorials for all core features. The package is unit-tested with 74% coverage. 
 
-The package is unit-tested with 73% coverage. 
+Community contributions are welcome via GitHub. The toolkit is actively maintained, and 
+users are encouraged to submit issues or feature requests.
 
 
 # References
