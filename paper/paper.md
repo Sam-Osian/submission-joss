@@ -29,18 +29,25 @@ bibliography: paper.bib
 
 # Summary
 
-Prevention of Future Death (PFD) reports are issued by coroners in England and Wales 
-when an inquest identifies risks that, if left unaddressed, could lead to further deaths. 
-Despite being freely available online, PFD reports are persistently underused by 
-researchers. This is largely because they are difficult to find, search, and analyse in bulk.
+
+Prevention of Future Death (PFD) reports are the official mechanism by which coroners in
+England and Wales alert individuals, organisations, and agencies to circumstances that may
+lead to further deaths. Each report sets out the context of an individual case, details the
+factors believed to have contributed, and identifies concerns that, if addressed, could prevent
+future deaths from occurring.
+
+While these documents represent a rare, ground-level view into public safety risks, their potential for analysis
+has long been obstructed: reports are scattered across a judicial website whose topic filters omit
+entire swathes of content. The website offers no ability to mass-download reports into a single
+dataset, and many older reports exist only as scanned PDFs, which cannot be text-searched or analysed 
+using conventional methods. 
 
 *PFD Toolkit* is a Python package designed to overcome these barriers. The toolkit automates 
-the full pipeline of accessing, cleaning, structuring and analysing PFD data, making 
-information contained within them readily usable. By integrating advanced natural language 
-processing – including large language models (LLMs) and vision-based models – the toolkit 
-can extract structured data from both text-based and scanned, image-based reports. Users 
-can search thousands of reports with flexible, plain-English queries and assign custom 
-thematic labels or extract specific features at scale.
+the full pipeline of loading, cleaning, structuring and analysing PFD data, making 
+information contained within them readily usable. By integrating large language models (LLMs) 
+and vision models, the toolkit extracts structured data from both text and scanned, image-based reports. 
+Users can search thousands of reports with flexible, plain-English queries, assign custom thematic labels, 
+and extract specific features at scale.
 
 The toolkit transforms a fragmented archive into a living resource for research and public 
 health, enabling rapid identification of emerging risks and timely policy response.
@@ -49,8 +56,8 @@ health, enabling rapid identification of emerging risks and timely policy respon
 
 # Statement of need
 
-Governmental and Parliamentary reviews repeatedly describe PFD reports as “under-utilised” 
-(Home Office, 2023), citing minimal repository functionality (Justice Committee, 2021). the 
+Governmental and Parliamentary reviews have described PFD reports as "under-utilised" 
+(Home Office, 2023), citing minimal repository functionality (Justice Committee, 2021). The 
 current system is noted as a “missed opportunity” for learning and reform (BMJ, 2024).
 
 This underuse largely stems from a series of practical and technical barriers: reports are 
@@ -58,14 +65,15 @@ published with inconsistent formats, incomplete metadata, and widespread use of 
 scanned images that are invisible to conventional search and text analysis tools. Around 
 73% of reports lack thematic labels, and those that exist are inconsistently applied and 
 frequently inaccurate (Bremmer et al., 2023; Zhang and Richards, 2023). As a result, 
-researchers and policymakers who wish to learn from this resource may have to screen, 
-collate, and extract relevant information report by report, demanding months of researcher 
-capacity.
+researchers and policymakers who wish to learn from this resource must screen, collate, 
+and extract relevant information report-by-report, demanding months or even years of 
+researcher capacity. One review manually screened and categorised as many as 3897 reports 
+by hand (Dernie, et al., 2023).
 
-Existing initiatives such as the *Preventable Deaths Tracker* offer summary statistics and 
-metadata, but do not support full-text search, custom coding, or detailed information 
-extraction. There remains a critical gap in infrastructure for automating the myiad of manual 
-tasks in PFD report analysis and lowering the barrier to research.
+Existing resources, notably the *Preventable Deaths Tracker*, provide summary statistics and 
+metadata, but lack support for full-text search, custom coding, or automatic information 
+extraction. There remains a critical gap in the infrastructure for automating the myiad of 
+manual tasks in PFD report analysis and for lowering the barrier to research.
 
 *PFD Toolkit* addresses this need by providing robust automation for every stage of PFD data 
 processing. It reliably scrapes, cleans, and standardises both text and image-based data, 
@@ -80,55 +88,56 @@ future deaths.
 
 # Key Features
 
-- **Rapid data access.** Instantly loads the latest Prevention of Future Deaths data, updated weekly.
-- **Three-layer scraping.** Handles HTML, .pdf, and scanned image reports using OCR and Vision-LLMs for comprehensive data extraction.
-- **Automated text cleaning.** Corrects spelling, grammar, and formatting issues across diverse report formats.
-- **Flexible natural language querying.** Screens and filters thousands of reports using plain-English research queries.
-- **Topic modelling.** Discovers recurring themes contained within a selection of PFD reports.
-- **Custom feature extraction.** Pulls structured fields and variables from unstructured report text.
-- **Batch AI processing.** Parallelises CPU and LLM tasks for highly efficient handling of large datasets.
+1. **Rapid data access.** Instantly loads the latest Prevention of Future Deaths data, 
+updated weekly.
+2. **Three-layer scraping.** Handles HTML, PDF, and scanned image reports using OCR and 
+vision-enabled language models (V-LLMs) for comprehensive data extraction.
+3. **Automated text cleaning.** Corrects spelling, grammar, and formatting issues across 
+diverse report structures.
+4. **Flexible natural language querying.** Screens and filters thousands of reports using 
+plain-English research queries.
+5. **Topic modelling.** Discovers recurring themes contained within a given selection of 
+PFD reports.
+6. **Custom feature extraction.** Pulls structured fields and variables from unstructured 
+report text.
+7. **Batch processing.** Supports parallel batch processing of both CPU and LLM tasks, 
+enabling efficient handling of large datasets.
+
 
 
 # Example usage
 
-<!-- Not sure if I like having this much code; not quite in keeping with other JOSS papers. What else could go here?
- -->
-
-Below, we've automated a previously manual workflow among PFD researchers. [...]
+The below code demonstrates key features #1 and #4. In a few lines of code, the user can automate potentially
+months or even years of manual work: downloading and screening thousands of reports into a research-relevant
+corpus.
 
 
 ```python
 #!pip install pfd_toolkit
-from pfd_toolkit import load_reports, LLM, Screener, Extractor
+from pfd_toolkit import load_reports, LLM, Screener
 
 # -- Load reports into a pandas DataFrame --
 reports = load_reports(
-  start_date="2020-01-01", end_date="2025-01-01"
+  start_date="2013-01-01", end_date="2025-01-01"
 )
 
 # -- Set up LLM client --
 llm_client = LLM(api_key=<YOUR_OPENAI_API_KEY>)
 
 # -- Screen/filter reports by a natural language query --
-screener = Screener(
-  reports=reports,
-  llm=llm_client,
-  query="Concerns related to the Mental Health Act"
-)
-screened_reports = screener.screen_reports()
+query="Concerns related to the Mental Health Act"
 
-# -- Discover and assign themes --
-extractor = Extractor(
-  reports=screened_reports,
-  llm=llm_client)
+screener = Screener(reports=reports, llm=llm_client)
 
-extractor.discover_themes(assign=True)
+screened_reports = screener.screen_reports(
+                              user_query=query)
 ```
 
 # Evaluation
 
-The toolkit’s effectiveness is demonstrated in a companion publication where it automated 
-an Office for National Statistics (ONS) research workflow. [...]
+The toolkit’s effectiveness is demonstrated in a companion publication, where it automated 
+an Office for National Statistics (ONS) research workflow - reducing months of manual screening 
+and analysis to a matter of minutes, matching human-level extraction accuracy.
 
 
 # Availability and documentation
