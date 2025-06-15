@@ -6,9 +6,11 @@ tags: # Dan: are these tags okay? Not sure if they're for searching on JOSS or i
   - Coroners' Reports
   - Open Data
   - United Kingdom
-  - Public Health
+  - Public health
+  - Public safety
   - Natural Language Processing (NLP)
   - Large Language Models (LLMs)
+  - Web scraping
 authors:
  - name: Sam Osian
    corresponding: true    # Corr. author isn't getting rendered rn; not sure why
@@ -75,7 +77,7 @@ researcher capacity. One review manually screened and categorised as many as 389
 by hand (Dernie, et al., 2023).
 
 Existing resources, notably the *Preventable Deaths Tracker*, provide summary statistics and 
-metadata, but lack support for full-text search, custom coding, or automatic information 
+metadata, but lack support for report-text searching, thematic discovery, or automatic information 
 extraction. There remains a critical gap in the infrastructure for automating the myriad of 
 manual tasks in PFD report analysis and for lowering the barrier to research.
 
@@ -83,7 +85,7 @@ manual tasks in PFD report analysis and for lowering the barrier to research.
 processing. It reliably scrapes, cleans, and standardises both text and image-based data, 
 enabling flexible thematic coding and feature extraction across the repository.
 
-This makes possible - for the first time - timely, up-to-date, and flexible analysis of the 
+This makes possible – for the first time – timely, up-to-date, and flexible analysis of the 
 entire national archive of PFD reports. In doing so, the toolkit closes the gap between 
 available evidence and actionable learning, ultimately supporting efforts to prevent 
 future deaths.
@@ -97,8 +99,8 @@ feature imo, though it does seem to reduce/eliminate false positives. -->
 
 1. **Rapid data access.** Instantly loads the latest Prevention of Future Deaths data, 
 updated weekly.
-2. **Three-layer scraping.** Handles HTML, PDF, and scanned image reports using OCR and 
-vision-enabled language models (V-LLMs) for comprehensive data extraction.
+2. **Three-layer scraping.** Handles HTML, .pdf, and scanned image reports using OCR and 
+vision-enabled large language models (V-LLMs) for comprehensive data extraction.
 3. **Automated text cleaning.** Corrects spelling, grammar, and formatting issues across 
 diverse report structures.
 4. **Flexible natural language querying.** Screens and filters thousands of reports using 
@@ -110,33 +112,26 @@ report text.
 7. **Batch processing.** Supports parallel batch processing of both CPU and LLM tasks, 
 enabling efficient handling of large datasets.
 
-The toolkit’s modular architecture also makes it straightforward to extend or adapt for 
-future research needs.
-
-
-
 
 # Example usage
 
-The example below showcases key features #1 and #4. With just a few lines of code, users can 
-automate what would otherwise take months of manual effort: downloading and screening thousands 
-of reports into a research-ready dataset.
+The example below showcases key features #1 and #4. With just a few lines of code and
+minutes-long runtime, users can automate what would otherwise take months of manual 
+effort: downloading and screening thousands of reports into a research-ready dataset.
 
 
 ```python
-#!pip install pfd_toolkit
 from pfd_toolkit import load_reports, LLM, Screener
 
 # -- Load reports into a pandas DataFrame --
 reports = load_reports(
-  start_date="2013-01-01", end_date="2025-07-01"
-)
+  start_date="2013-01-01", end_date="2025-07-01")
 
 # -- Set up LLM client --
 llm_client = LLM(api_key=<YOUR_OPENAI_API_KEY>)
 
 # -- Screen/filter reports by a natural language query --
-query="Concerns related to the Mental Health Act"
+query="Concerns related to detention under the Mental Health Act"
 
 screener = Screener(reports=reports, llm=llm_client)
 
@@ -154,12 +149,12 @@ and analysis to a matter of minutes, matching human-level extraction accuracy.
 # Availability and documentation
 
 *PFD Toolkit* is available on [GitHub](https://github.com/Sam-Osian/PFD-toolkit) and PyPI 
-(via `pip install pfd_toolkit`). Full documentation is available at: 
-https://sam-osian.github.io/pfd-toolkit/. Both the documentation and the GitHub repository 
-contain tutorials for all core features. The package is unit-tested with 74% coverage. 
+(via `pip install pfd_toolkit`). Full documentation and tutorials are available at:
+https://sam-osian.github.io/pfd-toolkit/. The package is unit-tested with 74% coverage and 
+is actively maintained. 
 
-Community contributions are welcome via GitHub. The toolkit is actively maintained, and 
-users are encouraged to submit issues or feature requests.
+Community contributions and feedback are welcome via 
+[GitHub Issues](https://github.com/Sam-Osian/PFD-toolkit/issues).
 
 
 # References
