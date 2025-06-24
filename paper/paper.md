@@ -35,25 +35,23 @@ bibliography: paper.bib
 
 # Summary
 
-Prevention of Future Death (PFD) reports are the official mechanism by which coroners in
-England and Wales alert individuals, organisations, and agencies to circumstances that may
-lead to further deaths. Each report sets out the context of an individual case, details the
-factors believed to have contributed, and identifies concerns that, if addressed, could prevent
-similar tragedies in the future.
+
+Prevention of Future Death (PFD) reports are how coroners in England and Wales alert others to 
+circumstances that may lead to further deaths. Each report sets out the context of
+an individual case, factors contributing to their death, and concerns that, if addressed, 
+could prevent similar tragedies from taking place.
 
 While these documents represent a rare, ground-level view into public safety risks, research
-involving PFD reports has been notoriously challenging. The process of assembling a usable 
-dataset demands extensive manual effort: locating, downloading, and extracting information from 
-thousands of inconsistently formatted documents, many only available as scanned images. This 
-labour-intensive process has placed effective analysis out of reach for many researchers 
-and policymakers.
+involving PFD reports has been notoriously challenging. Assembling a usable dataset requires 
+extensive manual effort: downloading, screening, and extracting information from thousands of 
+inconsistently formatted documents. This has placed effective analysis out of reach for many.
 
-*PFD Toolkit* is a Python package developed to overcome these barriers. It automates the 
-end-to-end workflow of loading, screening, and analysing PFD data. By combining 
-large language models (LLMs) and Vision-LLMs, the toolkit extracts structured information 
-from both text and scanned reports. Users can perform plain-English searches of reports, 
-assign custom thematic labels, and extract features at scale, enabling timely analysis 
-and rapid policy responses.
+*PFD Toolkit* is a Python package designed to overcome these barriers. It automates the 
+end-to-end workflow of loading, screening, and analysing PFD data. Using large language models 
+(LLMs) and Vision-LLMs (supporting both proprietary and open source models), it extracts 
+structured information from text and scanned reports. Users can perform natural language 
+searches of reports, discover recurring themes, and extract features at scale for rapid analysis.
+
 
 
 # Statement of need
@@ -65,28 +63,23 @@ and policy. Governmental and Parliamentary assessments have identified the curre
 called PFD reports "nothing more than a paper exercise," highlighting how known risks may recur 
 without scrutiny [@IAPDC_2023_pfdimpact].
 
-This underuse is largely driven from a series of practical and technical barriers on the
-Courts and Tribunals Judiciary website. Users cannot mass-download reports, while the 
-reports themselves are published with inconsistent formats, incomplete metadata, and 
-widespread use of digitally scanned reports which are often low resolution and lack embedded 
-text. Around 73% reports lack thematic labels, and those that exist are inconsistently applied 
-[@zhang_lessons_2023; @anthony_preventable_2023].
+This underuse is largely driven by a series of practical and technical barriers on the 
+[Courts and Tribunals Judiciary website](https://www.judiciary.uk/prevention-of-future-death-reports/), 
+where PFD reports are published: users cannot mass-download reports, formats are inconsistent, 
+metadata is incomplete, and many reports are low-resolution scans that lack embedded text. 
+Around 73% of reports lack thematic labels, and those that exist are inconsistently applied [@zhang_lessons_2023; @anthony_preventable_2023].
 
 Researchers must screen and extract information from potentially thousands of reports individually, 
 an effort that may require months or even years of manual labour [@bremner_systematic_2023]. 
-One review on opiod deaths manually screened as many as 3897 reports by hand 
-[@dernie_preventable_2023].
+One review on opioid deaths manually screened as many as 3897 reports by hand [@dernie_preventable_2023].
 
 The [*Preventable Deaths Tracker*](https://preventabledeathstracker.net/) is an existing resource 
 that provides valuable summary statistics and metadata on PFD reports, offering the only centralised resource of its 
 kind. However, it lacks report-text searching, thematic discovery, and custom information extraction. 
 There remains a critical gap in the infrastructure for supporting scalable analysis and reducing the manual burden associated with PFD research.
 
-
-Researchers have specifically called for embedding technology within the PFD system to automate 
-data collection, enhance data quality, and surface critical information from the unstructured
-text [@bremner_systematic_2023; @zhang_lessons_2023]
-
+Researchers have called for technology to automate data collection, enhance data quality, and 
+surface information from unstructured text [@bremner_systematic_2023; @zhang_lessons_2023].
 
 *PFD Toolkit* addresses each of these longstanding challenges by enabling researchers to load and 
 clean both text and image-based data; automate thematic discovery; and extract 
@@ -109,8 +102,7 @@ reports using natural language queries.
 PFD reports.
 6. **Custom feature extraction.** Pulls structured fields and variables from unstructured 
 report text.
-7. **Batch processing.** Supports parallel batch processing of both CPU and LLM tasks, 
-enabling efficient handling of large datasets.
+7. **Parallel processing.** Supports parallel processing of both CPU and LLM tasks.
 
 
 # Example usage
