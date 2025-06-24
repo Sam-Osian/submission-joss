@@ -52,8 +52,8 @@ and policymakers.
 end-to-end workflow of loading, screening, and analysing PFD data. By combining 
 large language models (LLMs) and Vision-LLMs, the toolkit extracts structured information 
 from both text and scanned reports. Users can perform plain-English searches of reports, 
-assign custom thematic labels, and extract features (such as recurring themes) at scale, 
-enabling timely analysis and supporting rapid policy responses.
+assign custom thematic labels, and extract features at scale, enabling timely analysis 
+and rapid policy responses.
 
 
 # Statement of need
@@ -62,28 +62,26 @@ Despite repeated calls for reform, PFD reports remain persistently underused in 
 and policy. Governmental and Parliamentary assessments have identified the current system as 
 "under-utilised" for public safety, with no existing mechanisms to track recurring issues
 [@home_office_hillsborough_2023; @HCJustice2021_CoronerService]. Families of the deceased have 
-accused PFD reports as being "nothing more than a paper exercise," criticising a system that
-essentially allows known risks to recur without scrutiny [@IAPDC_2023_pfdimpact].
+called PFD reports "nothing more than a paper exercise," highlighting how known risks may recur 
+without scrutiny [@IAPDC_2023_pfdimpact].
 
 This underuse is largely driven from a series of practical and technical barriers on the
 Courts and Tribunals Judiciary website. Users cannot mass-download reports, while the 
 reports themselves are published with inconsistent formats, incomplete metadata, and 
-widespread use of digitally scanned images which are inaccessible to standard search and 
-analysis tools. Around 73% reports lack thematic labels, and those that exist are 
-inconsistently applied [@zhang_lessons_2023; @anthony_preventable_2023].
+widespread use of digitally scanned reports which are often low resolution and lack embedded 
+text. Around 73% reports lack thematic labels, and those that exist are inconsistently applied 
+[@zhang_lessons_2023; @anthony_preventable_2023].
 
 Researchers must screen and extract information from potentially thousands of reports individually, 
 an effort that may require months or even years of manual labour [@bremner_systematic_2023]. 
 One review on opiod deaths manually screened as many as 3897 reports by hand 
 [@dernie_preventable_2023].
 
-The *Preventable Deaths Tracker*[^note] is an existing resource that provides valuable 
-summary statistics and metadata on PFD reports, offering the only centralised resource of its 
-kind. However, it does not currently support report-text searching, thematic discovery, or 
-custom information extraction. There remains a critical gap in the infrastructure for supporting 
-scalable analysis and reducing the manual burden associated with PFD research.
+The [*Preventable Deaths Tracker*](https://preventabledeathstracker.net/) is an existing resource 
+that provides valuable summary statistics and metadata on PFD reports, offering the only centralised resource of its 
+kind. However, it lacks report-text searching, thematic discovery, and custom information extraction. 
+There remains a critical gap in the infrastructure for supporting scalable analysis and reducing the manual burden associated with PFD research.
 
-[^note]: Available at: <https://preventabledeathstracker.net/>
 
 Researchers have specifically called for embedding technology within the PFD system to automate 
 data collection, enhance data quality, and surface critical information from the unstructured
@@ -133,7 +131,10 @@ reports = load_reports(
 llm_client = LLM(api_key=<YOUR_OPENAI_API_KEY>)
 
 # -- Screen/filter reports by a natural language query --
-query="Reports **explicitly** mentioning detention under the Mental Health Act"
+query="""
+Reports **explicitly** mentioning detention 
+under the Mental Health Act
+"""
 
 screener = Screener(reports=reports, llm=llm_client)
 
@@ -144,11 +145,9 @@ filtered_df = screener.screen_reports(
 
 # Availability and documentation
 
-*PFD Toolkit* is available on PyPI (via `pip install pfd_toolkit`). Full source code is available on [GitHub](https://github.com/Sam-Osian/PFD-toolkit).
+*PFD Toolkit* is available on PyPI (via `pip install pfd_toolkit`). Full source code is available on [GitHub](https://github.com/Sam-Osian/PFD-toolkit) while package documentation is available [here](https://sam-osian.github.io/PFD-toolkit/).
 
-Package documentation is available at: https://sam-osian.github.io/PFD-toolkit/. 
-
-We welcome (and actively encourage) community contributions, feedback and feature requests. Please see our [contributions page](https://sam-osian.github.io/PFD-toolkit/contribute/) for more.
+We welcome community contributions, feedback and feature requests. Please see our [contributions page](https://sam-osian.github.io/PFD-toolkit/contribute/) for more.
 
 The package is unit-tested with 74% coverage and is actively maintained. 
 
