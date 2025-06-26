@@ -17,7 +17,7 @@ authors:
    orcid: 0009-0000-7644-6218
    affiliation: "1, 2, 3"
  - name: Jonathan Pytches
-   orcid: 0000-0000-0000-0000 # Stop forgetting to ask John to get an orcid!!!
+   orcid: 0009-0008-3336-7104
    affiliation: 4
 affiliations:
  - name: Department of Primary Care and Mental Health, University of Liverpool, United Kingdom
@@ -46,9 +46,9 @@ extensive manual effort: downloading, screening, and extracting information from
 inconsistently formatted documents. This has placed effective analysis out of reach for many.
 
 *PFD Toolkit* is a Python package designed to overcome these barriers, automating the 
-loading, screening, and analysing of PFD data. Using large language models (LLMs) 
+abundance of manual tasks involved in analysing PFD data. Using large language models (LLMs) 
 and Vision-LLMs (supporting both proprietary and open source models), it extracts 
-structured information from text and scanned reports. Users can perform natural language 
+structured information from text and scanned PFD reports. Users can perform natural language 
 searches of reports, discover recurring themes, and extract features at scale for rapid analysis.
 
 
@@ -62,7 +62,7 @@ called PFD reports "nothing more than a paper exercise," highlighting the lack o
 tracking of coroner concerns [@IAPDC_2023_pfdimpact].
 
 This underuse is largely driven by a series of practical and technical barriers on the 
-[Courts and Tribunals Judiciary website](https://www.judiciary.uk/prevention-of-future-death-reports/), 
+Courts and Tribunals Judiciary [website](https://www.judiciary.uk/prevention-of-future-death-reports/), 
 where PFD reports are published: users cannot mass-download reports, formats are inconsistent, 
 metadata is incomplete, and many reports are low-resolution scans that lack embedded text. 
 Around 73% of reports lack thematic labels, and those that exist are inconsistently applied [@zhang_lessons_2023; @anthony_preventable_2023].
@@ -95,12 +95,12 @@ vision-enabled large language models (V-LLMs) for comprehensive data extraction.
 3. **Automated text cleaning.** Corrects spelling, grammar, and formatting issues across 
 diverse report structures.
 4. **Flexible searching.** Allows users to automatically screen and filter thousands of 
-reports using natural language queries.
+reports using natural language queries (e.g. "medication errors", "deaths in police custody").
 5. **Topic modelling.** Discovers recurring themes contained within a given selection of 
 PFD reports.
 6. **Custom feature extraction.** Pulls structured fields and variables from unstructured 
 report text.
-7. **Parallel processing.** Supports parallel processing of both CPU and LLM tasks.
+7. **Fast run-time.** Supports parallel processing of LLM tasks.
 
 
 # Example usage
@@ -122,7 +122,7 @@ llm_client = LLM(api_key=<YOUR_OPENAI_API_KEY>)
 
 # -- Screen/filter reports by a natural language query --
 query="""
-Reports **explicitly** mentioning detention 
+Reports explicitly mentioning detention 
 under the Mental Health Act
 """
 
@@ -139,7 +139,7 @@ filtered_df = screener.screen_reports(
 
 We welcome community contributions, feedback and feature requests. Please see our [contributions page](https://sam-osian.github.io/PFD-toolkit/contribute/) for more.
 
-The package is unit-tested with 74% coverage and is actively maintained. 
+The package is unit tested with 74% coverage and is actively maintained. 
 
 
 # References
